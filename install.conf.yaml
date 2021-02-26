@@ -8,7 +8,8 @@
 #     ~/.tmux.conf: tmux.conf
 #     ~/.vim: vim
 #     ~/.vimrc: vimrc
-    ~/.zshrc: zshrc
+    ~/.zshrc:
+    ~/.gitconfig:
 
 # - create:
 #     - ~/downloads
