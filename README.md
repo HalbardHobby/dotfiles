@@ -7,11 +7,11 @@ I'm Learning something about dotfiles, automating and securing my workflow.
 ## TODO
 - [ ] Terminal Preferences
 - [ ] Change Shell to ZSH
-- [ ] Add .zshrc
-- [ ] Add .vimrc
+- [x] Add .zshrc
+- [x] Add .vimrc
 - [ ] Create configuration scripts
 - [ ] System Preferences
 - [ ] Tools Configuration
-- [ ] Git (config and SSH)
+- [x] Git (config and SSH)
 - [ ] Installation Script
 
