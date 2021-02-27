@@ -11,6 +11,7 @@
     ~/.bashrc:
     ~/.zshrc:
     ~/.gitconfig:
+    ~/.local/bin/zk_sync.sh: scripts/zk_sync.sh
 
 # - create:
 #     - ~/downloads
