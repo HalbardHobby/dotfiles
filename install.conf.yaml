@@ -12,8 +12,10 @@
     ~/.zshrc:
     ~/.gitconfig:
     ~/.local/bin/zk_sync.sh: scripts/zk_sync.sh
+    ~/.zsh/themes/agnoster.zsh-theme: themes/agnoster-halbard/agnoster.zsh-theme
 
-# - create:
+- create:
+    - ~/.zsh/themes
 #     - ~/downloads
 #     - ~/.vim/undo-history
 

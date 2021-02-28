@@ -17,6 +17,8 @@ setopt HIST_EXPIRE_DUPS_FIRST
 setopt EXTENDED_HISTORY
 setopt SHARE_HISTORY
 
+setopt promptsubst
+
 # ===== Create Aliases ===== 
 
 alias la='ls -A'
@@ -45,9 +47,8 @@ alias gcm='git commit -m'
 export MANPAGER="zsh -c 'col -bx | batcat -l man -p'"
 
 # Customize Prompts
-PS1='
-%1~ %L %#'
 
+PROMPT='%{%f%b%k%}$(build_prompt) '
 RPROMPT='%*'
 
 # Add Locations to $PATH
@@ -56,8 +57,9 @@ RPROMPT='%*'
 # Write handy functions
 
 
-# ZSH Plugins
+# ===== ZSH Plugins =====
 
+source ~/.zsh/themes/agnoster.zsh-theme
 
 # Misc
 
