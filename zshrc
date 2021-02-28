@@ -43,6 +43,13 @@ alias gr='git reset'
 alias gc='git commit -v'
 alias gcm='git commit -m'
 
+# --- Navigation Aliases ---
+
+alias ..='cd ..'
+alias ~='cd ~'
+alias dl='cd ~/Downloads'
+alias dc='cd ~/Documents'
+
 # Syntax highlighting for man pages using bat
 export MANPAGER="zsh -c 'col -bx | batcat -l man -p'"
 
