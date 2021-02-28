@@ -19,5 +19,6 @@
 #     - ~/downloads
 #     - ~/.vim/undo-history
 
-# - shell:
+- shell:
+    - [sudo apt install fonts-powerline]
 #   - [git submodule update --init --recursive, Installing submodules]
