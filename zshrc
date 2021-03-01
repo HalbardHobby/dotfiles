@@ -39,6 +39,8 @@ alias gaa='git add --all'
 
 alias gs='git status'
 alias gr='git reset'
+alias gb='git branch'
+alias gp='git push'
 
 alias gc='git commit -v'
 alias gcm='git commit -m'
