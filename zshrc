@@ -52,6 +52,8 @@ alias ~='cd ~'
 alias dl='cd ~/Downloads'
 alias dc='cd ~/Documents'
 
+alias please=sudo !!
+
 # Syntax highlighting for man pages using bat
 export MANPAGER="zsh -c 'col -bx | batcat -l man -p'"
 
