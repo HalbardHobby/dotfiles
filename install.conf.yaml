@@ -6,8 +6,8 @@
 
 - link:
 #     ~/.tmux.conf: tmux.conf
-#     ~/.vim: vim
     ~/.vimrc:
+    ~/.config/nvim/init.vim: init.vim
     ~/.bashrc:
     ~/.zshrc:
     ~/.gitconfig:
@@ -17,7 +17,6 @@
 
 - create:
     - ~/.zsh/themes
-#     - ~/downloads
 #     - ~/.vim/undo-history
 
 - shell:
