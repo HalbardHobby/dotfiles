@@ -1,8 +1,12 @@
 
-echo '😺😺😺 Hola, humano 😺😺😺'
+fortune
 
 # Set Variables
 
+# ====== Set theming options =======
+
+cat ~/.cache/wal/sequences
+source ~/.cache/wal/colors-tty.sh
 
 # ====== Change ZSH Options =======
 
@@ -82,3 +86,7 @@ export PATH=$PATH:$ANDROID_SDK_ROOT/cmdline-tools/tools/bin
 
 # adb, fastboot
 export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
+
+# golang
+export PATH=$PATH:/usr/local/go/bin
+
