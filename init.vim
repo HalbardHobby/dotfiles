@@ -84,6 +84,25 @@ nnoremap <C-j> <C-e>
 " NERDtree configuration
 nnoremap <C-e> :NERDTreeToggle<CR>
 
+" Disable arrow keys
+nnoremap <UP> :echo "Trust the force ⚡"<CR>
+nnoremap <DOWN> :echo "Trust the force ⚡"<CR>
+nnoremap <LEFT> :echo "Trust the force ⚡"<CR>
+nnoremap <RIGHT> :echo "Trust the force ⚡"<CR>
+
+inoremap <UP> <ESC>:echo "Trust the force ⚡"<CR>a
+inoremap <DOWN> <ESC>:echo "Trust the force ⚡"<CR>a
+inoremap <LEFT> <ESC>:echo "Trust the force ⚡"<CR>a
+inoremap <RIGHT> <ESC>:echo "Trust the force ⚡"<CR>a
+
+" Better tabs
+nnoremap tt :tabnew<CR>
+nnoremap tw :tabclose<CR>
+nnoremap tj :tabnext<CR>
+nnoremap tk :tabprevious<CR>
+nnoremap th :tabfirst<CR>
+nnoremap tl :tablast<CR>
+
 " TreeSitter Configuration
 
 lua <<EOF
