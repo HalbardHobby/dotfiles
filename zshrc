@@ -90,4 +90,5 @@ export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
 
 # golang
 export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$(go env GOPATH)/bin
 
