@@ -13,6 +13,7 @@
     ~/.gitconfig:
     ~/.local/bin/zk_sync.sh: scripts/zk_sync.sh
     ~/.local/bin/proton_update.sh: scripts/proton_update.sh
+    ~/.local/bin/tiefighter.sh: scripts/tiefighter.sh
     ~/.zsh/themes/agnoster.zsh-theme: themes/agnoster-halbard/agnoster.zsh-theme
 
 - create:
