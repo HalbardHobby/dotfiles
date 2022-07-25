@@ -1,4 +1,5 @@
 
+tiefighter.sh
 fortune
 
 # Set Variables
