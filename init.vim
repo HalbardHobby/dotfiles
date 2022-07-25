@@ -16,6 +16,10 @@ set guicursor=
 set relativenumber
 set number
 
+" trailing chars
+set list
+set listchars=tab:▸\ ,trail:·,precedes:←,extends:→
+
 " Basic IDE behavior
 set hidden
 set noswapfile
@@ -53,9 +57,6 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 
-" Autocompletion
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
 " Plug 'gruvbox-community/gruvbox'
 Plug 'dylanaraps/wal.vim'
 
@@ -78,8 +79,9 @@ nnoremap <leader>pp "+p
 nnoremap <leader>yy "+y
 
 " Remap for scrolling
-nnoremap <C-k> <C-y>
-nnoremap <C-j> <C-e>
+nnoremap K <C-y>
+nnoremap J <C-e>
+nnoremap <C-h> K
 
 " NERDtree configuration
 nnoremap <C-e> :NERDTreeToggle<CR>
@@ -98,10 +100,16 @@ inoremap <RIGHT> <ESC>:echo "Trust the force ⚡"<CR>a
 " Better tabs
 nnoremap tt :tabnew<CR>
 nnoremap tw :tabclose<CR>
-nnoremap tj :tabnext<CR>
-nnoremap tk :tabprevious<CR>
-nnoremap th :tabfirst<CR>
-nnoremap tl :tablast<CR>
+nnoremap <Tab> :tabnext<CR>
+nnoremap <S-Tab> :tabprevious<CR>
+
+" Better windows
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+
+set splitright splitbelow
 
 " TreeSitter Configuration
 
