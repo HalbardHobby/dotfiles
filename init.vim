@@ -39,8 +39,12 @@ set cmdheight=2
 set updatetime=50
 
 call plug#begin('~/.local/share/nvim/plugged')
+
+" Add Icon support
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ryanoasis/vim-devicons'
+
+" Better file explorer
 Plug 'preservim/nerdtree'
 
 " Telescope dependencies
@@ -49,11 +53,20 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 
-Plug 'gruvbox-community/gruvbox'
+" Autocompletion
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Plug 'gruvbox-community/gruvbox'
+Plug 'dylanaraps/wal.vim'
+
+" air line
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
 call plug#end()
 
 " Setup appereance
-colorscheme gruvbox
+colorscheme wal
 highlight Normal guibg=none ctermbg=NONE
 
 let mapleader = " "
@@ -64,6 +77,23 @@ nnoremap <C-p> :lua require'telescope.builtin'.find_files()<CR>
 nnoremap <leader>pp "+p
 nnoremap <leader>yy "+y
 
+" Remap for scrolling
+nnoremap <C-k> <C-y>
+nnoremap <C-j> <C-e>
+
 " NERDtree configuration
 nnoremap <C-e> :NERDTreeToggle<CR>
 
+" TreeSitter Configuration
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+    ensure_installed = { "cpp", "c_sharp", "css", 
+                         "dockerfile", "go", "hcl", "python"},
+    auto_install = true,
+    highlight = {
+        enable = true,              -- false will disable the whole extension
+        additional_vim_regex_highlighting = false,
+    },
+}
+EOF
