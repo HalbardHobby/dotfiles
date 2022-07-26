@@ -65,6 +65,10 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'L3MON4D3/LuaSnip'
 
+" Git integration
+Plug 'lewis6991/gitsigns.nvim'
+Plug 'tpope/vim-fugitive'
+
 " Plug 'gruvbox-community/gruvbox'
 Plug 'dylanaraps/wal.vim'
 
@@ -80,6 +84,7 @@ highlight Normal guibg=none ctermbg=NONE
 
 let mapleader = " "
 nnoremap <leader>ps :lua require'telescope.builtin'.grep_string({ search = vim.fn.input("Search For > ")})<CR>
+nnoremap <leader>pc :lua require'telescope.builtin'.commands()<CR>
 nnoremap <C-p> :lua require'telescope.builtin'.find_files()<CR>
 
 " Remap for easier clipboard use
@@ -116,6 +121,8 @@ set splitright splitbelow
 
 " LSP Configuration
 lua <<EOF
+require'gitsigns'.setup()
+
 -- Setup lspconfig.
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
