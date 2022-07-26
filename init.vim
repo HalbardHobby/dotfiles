@@ -30,7 +30,7 @@ set undofile
 " Autocomplete behavior
 set incsearch
 set scrolloff=8
-set completeopt=menuone,noinsert,noselect
+set completeopt=menu,menuone,noinsert,noselect
 
 " Default fuzzyfinding
 set path+=**
@@ -57,6 +57,14 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 
+" LSP configuration
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'L3MON4D3/LuaSnip'
+
 " Plug 'gruvbox-community/gruvbox'
 Plug 'dylanaraps/wal.vim'
 
@@ -77,11 +85,6 @@ nnoremap <C-p> :lua require'telescope.builtin'.find_files()<CR>
 " Remap for easier clipboard use
 nnoremap <leader>pp "+p
 nnoremap <leader>yy "+y
-
-" Remap for scrolling
-nnoremap K <C-y>
-nnoremap J <C-e>
-nnoremap <C-h> K
 
 " NERDtree configuration
 nnoremap <C-e> :NERDTreeToggle<CR>
@@ -111,9 +114,64 @@ noremap <C-l> <C-w>l
 
 set splitright splitbelow
 
-" TreeSitter Configuration
-
+" LSP Configuration
 lua <<EOF
+-- Setup lspconfig.
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+local on_attach = function(client, bufnr)
+    -- Enable completion triggered by <c-x><c-o>
+    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+    
+    local bufopts = { noremap=true, silent=true, buffer=bufnr }
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+    vim.keymap.set("n", "<C-k>", vim.lsp.signature_help, bufopts)
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
+    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
+    vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, bufopts)
+    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
+    vim.keymap.set("n", "<leader>dj", vim.diagnostic.goto_next, bufopts)
+    vim.keymap.set("n", "<leader>dk", vim.diagnostic.goto_prev, bufopts)
+    vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, bufopts)
+end
+
+require'lspconfig'.gopls.setup{
+    capabilities = capabilities,
+    on_attach = on_attach,
+}
+
+require'lspconfig'.terraformls.setup{
+    capabilities = capabilities,
+    on_attach = on_attach,
+}
+
+local cmp = require'cmp'
+
+cmp.setup({
+    snippet = {
+        expand = function(args)
+            require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+        end,
+    },
+    window = {
+        -- completion = cmp.config.window.bordered(),
+        -- documentation = cmp.config.window.bordered(),
+    },
+    mapping = cmp.mapping.preset.insert({
+        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-e>'] = cmp.mapping.abort(),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    }),
+    sources = cmp.config.sources({
+        { name = 'nvim_lsp' },
+        { name = 'luasnip' }, -- For luasnip users.
+    }, {
+        { name = 'buffer' },
+    })
+})
+
 require'nvim-treesitter.configs'.setup {
     ensure_installed = { "cpp", "c_sharp", "css", 
                          "dockerfile", "go", "hcl", "python"},
