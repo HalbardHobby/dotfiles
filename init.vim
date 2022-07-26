@@ -38,6 +38,7 @@ set wildmenu
 
 set signcolumn=yes
 set colorcolumn=80
+set showtabline=2
 
 set cmdheight=2
 set updatetime=50
@@ -81,6 +82,22 @@ call plug#end()
 " Setup appereance
 colorscheme wal
 highlight Normal guibg=none ctermbg=NONE
+
+" AirLine configuration
+
+" Enable powerline fonts
+let g:airline_powerline_fonts = 1
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extension#tabline#left_sep = "\ue0c6"
+let g:airline#extension#tabline#left_alt_sep = "ue0c4"
+let g:airline#extension#tabline#right_sep = "\ue0c7"
+let g:airline#extension#tabline#right_alt_sep = "\ue0c5"
+
+let g:airline_left_sep = "\ue0c6"
+let g:airline_left_alt_sep = "\ue0c4"
+let g:airline_right_sep = "\ue0c7"
+let g:airline_right_alt_sep = "\ue0c5"
 
 let mapleader = " "
 nnoremap <leader>ps :lua require'telescope.builtin'.grep_string({ search = vim.fn.input("Search For > ")})<CR>
@@ -199,3 +216,4 @@ require'nvim-treesitter.configs'.setup {
     },
 }
 EOF
+
