@@ -70,7 +70,8 @@ Plug 'L3MON4D3/LuaSnip'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'tpope/vim-fugitive'
 
-" Plug 'gruvbox-community/gruvbox'
+Plug 'altercation/vim-colors-solarized'
+Plug 'gruvbox-community/gruvbox'
 Plug 'dylanaraps/wal.vim'
 
 " air line
@@ -80,7 +81,9 @@ Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 " Setup appereance
-colorscheme wal
+set background=dark
+colorscheme solarized
+let g:airline_theme = 'solarized_flood'
 highlight Normal guibg=none ctermbg=NONE
 
 " AirLine configuration
@@ -88,16 +91,22 @@ highlight Normal guibg=none ctermbg=NONE
 " Enable powerline fonts
 let g:airline_powerline_fonts = 1
 
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extension#tabline#left_sep = "\ue0c6"
-let g:airline#extension#tabline#left_alt_sep = "ue0c4"
-let g:airline#extension#tabline#right_sep = "\ue0c7"
-let g:airline#extension#tabline#right_alt_sep = "\ue0c5"
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
 
 let g:airline_left_sep = "\ue0c6"
 let g:airline_left_alt_sep = "\ue0c4"
 let g:airline_right_sep = "\ue0c7"
 let g:airline_right_alt_sep = "\ue0c5"
+
+let g:airline_symbols.branch = "\uf113"
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extension#tabline#left_sep = "\ue0c6"
+let g:airline#extension#tabline#left_alt_sep = "ue0c4"
+let g:airline#extension#tabline#right_sep = "\ue0c7"
+let g:airline#extension#tabline#right_alt_sep = "\ue0c5"
 
 let mapleader = " "
 nnoremap <leader>ps :lua require'telescope.builtin'.grep_string({ search = vim.fn.input("Search For > ")})<CR>
