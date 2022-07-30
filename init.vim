@@ -70,9 +70,8 @@ Plug 'L3MON4D3/LuaSnip'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'tpope/vim-fugitive'
 
-Plug 'altercation/vim-colors-solarized'
-Plug 'gruvbox-community/gruvbox'
-Plug 'dylanaraps/wal.vim'
+" Themes
+Plug 'Shatur/neovim-ayu'
 
 " air line
 Plug 'vim-airline/vim-airline'
@@ -82,8 +81,8 @@ call plug#end()
 
 " Setup appereance
 set background=dark
-colorscheme solarized
-let g:airline_theme = 'solarized_flood'
+colorscheme ayu-mirage
+let g:airline_theme = 'ayu_dark'
 highlight Normal guibg=none ctermbg=NONE
 
 " AirLine configuration
