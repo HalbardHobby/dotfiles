@@ -1,7 +1,4 @@
 
-tiefighter.sh
-fortune
-
 # Set Variables
 
 # ====== Change ZSH Options =======
@@ -86,4 +83,19 @@ export PATH=$PATH:$ANDROID_SDK_ROOT/cmdline-tools/tools/bin
 # adb, fastboot
 export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
 
+
+# ===== Startup =========
+
+tiefighter.sh
+fortune
+
+# Attach tmux to shell
+#  1. check if tmux is exevutable
+#  2. check if graphical session is running
+#  3. check if not already inside tmux session
+if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ] && [ -z "${TMUX}" ]; then
+    # Try to attach.
+    # If not able, create a new session
+    tmux attach || tmux >/dev/null 2>&1
+fi
 
