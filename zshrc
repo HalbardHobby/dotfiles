@@ -63,7 +63,10 @@ RPROMPT='%*'
 
 # golang
 export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:$(go env GOPATH)/bin
+
+if [ -x "$(command -v go)" ]; then
+    export PATH=$PATH:$(go env GOPATH)/bin
+fi
 
 # Write handy functions
 
