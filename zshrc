@@ -74,16 +74,6 @@ source ~/.zsh/themes/agnoster.zsh-theme
 
 # Misc
 
-# Android SDK
-export ANDROID_SDK_ROOT=$HOME/Android
-
-# avdmanager, sdkmanager
-export PATH=$PATH:$ANDROID_SDK_ROOT/cmdline-tools/tools/bin
-
-# adb, fastboot
-export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
-
-
 # ===== Startup =========
 
 tiefighter.sh
