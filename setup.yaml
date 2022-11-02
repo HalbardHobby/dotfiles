@@ -1,0 +1,50 @@
+- name: local_setup
+  hosts: localhost
+  connection: local
+  become: true
+
+  tasks:
+    - name: Update existing packages
+      ansible.builtin.apt:
+        update_cache: yes
+        upgrade: dist
+
+
+- name: Docker Setup
+  hosts: localhost
+  connection: local
+  become: true
+
+  tasks:
+    - name: Add Docker GPG apt key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Add Docker repository
+      apt_repository:
+        repo: deb https://download.docker.com/linux/ubuntu bionic stable
+        state: present
+
+    - name: Update apt and install docker components
+      apt: name={{ item }} state=latest update_cache=yes
+      loop: [ 'docker-ce', 'docker-ce-cli', 'containerd.io']
+      retries: 3
+      delay: 5
+      register: result
+      until: result is not failed
+
+    - name: Ensure group "docker" exists
+      ansible.builtin.group:
+        name: docker
+
+
+- name: Install Whatsdesk
+  hosts: localhost
+  connection: local
+  become: true
+
+  tasks:
+    - name: download installer
+      apt:
+        deb: https://zerkc.gitlab.io/whatsdesk/whatsdesk_0.3.9_amd64.deb
